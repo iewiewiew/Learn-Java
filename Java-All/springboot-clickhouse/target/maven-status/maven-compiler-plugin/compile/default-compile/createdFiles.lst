@@ -1,0 +1,7 @@
+com/wmh/service/UserInfoService.class
+com/wmh/mapper/UserInfoMapper.class
+com/wmh/ClickHouseApplication.class
+com/wmh/config/DruidConfig.class
+com/wmh/entity/UserInfo.class
+com/wmh/controller/UserInfoController.class
+com/wmh/config/ConnectionParamConfig.class

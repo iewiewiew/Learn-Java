@@ -1,0 +1,123 @@
+{
+  "groups": [
+    {
+      "name": "spring.datasource",
+      "type": "org.example.config.DruidProperties",
+      "sourceType": "org.example.config.DruidProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.datasource.driver-class-name",
+      "type": "java.lang.String",
+      "sourceType": "org.example.config.DruidProperties",
+      "defaultValue": "com.mysql.cj.jdbc.Driver"
+    },
+    {
+      "name": "spring.datasource.filters",
+      "type": "java.lang.String",
+      "sourceType": "org.example.config.DruidProperties",
+      "defaultValue": "stat"
+    },
+    {
+      "name": "spring.datasource.initial-size",
+      "type": "java.lang.Integer",
+      "sourceType": "org.example.config.DruidProperties",
+      "defaultValue": 10
+    },
+    {
+      "name": "spring.datasource.max-active",
+      "type": "java.lang.Integer",
+      "sourceType": "org.example.config.DruidProperties",
+      "defaultValue": 60
+    },
+    {
+      "name": "spring.datasource.max-pool-prepared-statement-per-connection-size",
+      "type": "java.lang.Integer",
+      "sourceType": "org.example.config.DruidProperties",
+      "defaultValue": 50
+    },
+    {
+      "name": "spring.datasource.max-wait",
+      "type": "java.lang.Integer",
+      "sourceType": "org.example.config.DruidProperties",
+      "defaultValue": 60000
+    },
+    {
+      "name": "spring.datasource.min-evictable-idle-time-millis",
+      "type": "java.lang.Integer",
+      "sourceType": "org.example.config.DruidProperties",
+      "defaultValue": 300000
+    },
+    {
+      "name": "spring.datasource.min-idle",
+      "type": "java.lang.Integer",
+      "sourceType": "org.example.config.DruidProperties",
+      "defaultValue": 3
+    },
+    {
+      "name": "spring.datasource.password",
+      "type": "java.lang.String",
+      "sourceType": "org.example.config.DruidProperties"
+    },
+    {
+      "name": "spring.datasource.pool-prepared-statements",
+      "type": "java.lang.Boolean",
+      "sourceType": "org.example.config.DruidProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "spring.datasource.remove-abandoned",
+      "type": "java.lang.Boolean",
+      "sourceType": "org.example.config.DruidProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "spring.datasource.remove-abandoned-timeout",
+      "type": "java.lang.Integer",
+      "sourceType": "org.example.config.DruidProperties",
+      "defaultValue": 180
+    },
+    {
+      "name": "spring.datasource.test-on-borrow",
+      "type": "java.lang.Boolean",
+      "sourceType": "org.example.config.DruidProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "spring.datasource.test-on-return",
+      "type": "java.lang.Boolean",
+      "sourceType": "org.example.config.DruidProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "spring.datasource.test-while-idle",
+      "type": "java.lang.Boolean",
+      "sourceType": "org.example.config.DruidProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "spring.datasource.time-between-eviction-runs-millis",
+      "type": "java.lang.Integer",
+      "sourceType": "org.example.config.DruidProperties",
+      "defaultValue": 60000
+    },
+    {
+      "name": "spring.datasource.url",
+      "type": "java.lang.String",
+      "sourceType": "org.example.config.DruidProperties"
+    },
+    {
+      "name": "spring.datasource.username",
+      "type": "java.lang.String",
+      "sourceType": "org.example.config.DruidProperties"
+    },
+    {
+      "name": "spring.datasource.validation-query",
+      "type": "java.lang.String",
+      "sourceType": "org.example.config.DruidProperties",
+      "defaultValue": "SELECT 'x'"
+    }
+  ],
+  "hints": []
+}

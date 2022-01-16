@@ -1,0 +1,4 @@
+org/example/domain/FileInfo.class
+org/example/controller/FileController.class
+org/example/config/MinIOConfiguration.class
+org/example/Application.class
