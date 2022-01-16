@@ -1,0 +1,26 @@
+
+{
+  "name": "expressjs-hello",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha --reporter mochawesome"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@code.aliyun.com:flow-example/node-expressjs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-sass": "^5.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.2",
+    "mochawesome": "^4.1.0",
+    "supertest": "^4.0.2"
+  }
+}

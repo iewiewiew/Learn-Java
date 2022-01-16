@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+<title>WebSocket 测试</title>
+<body>
+<h2>WebSocket 测试</h2>
+<HEADER class="header">
+    <a class="back" ></a>
+    <h3 class="tit">服务端：</h3>
+</HEADER>
+<div id="message">
+
+</div>
+
+<HEADER class="header1">
+    <a class="back" ></a>
+    <h3 class="tit">客户端：</h3>
+</HEADER>
+
+<div id="footer">
+    <input id="text" class="my-input" type="text" />
+    <button onclick="send()" >发&nbsp;送</button>
+</div>
+
+<div id="footer1">
+    <br/>
+    <button onclick="closeWebSocket()" >关闭websocket连接</button>
+    <button onclick="openWebSocket()" >建立websocket连接</button>
+</div>
+
+
+<script language="javascript" type="text/javascript">
+    var websocket = null;
+    //判断当前浏览器是否支持WebSocket，是则创建WebSocket
+    if ('WebSocket' in window) {
+        console.log("浏览器支持Websocket");
+        websocket = new WebSocket("ws://127.0.0.1:1111/websocket/demo");
+    } else {
+        alert('当前浏览器 Not support websocket')
+    }
+
+    //连接发生错误的回调方法
+    websocket.onerror = function () {
+        console.log("WebSocket连接发生错误");
+        setMessageInnerHTML("WebSocket连接发生错误");
+    };
+    //连接成功建立的回调方法
+    websocket.onopen = function () {
+	// setMessageInnerHTML("WebSocket连接成功");
+        console.log("WebSocket连接成功");
+    }
+    //接收到消息的回调方法
+    websocket.onmessage = function (event) {
+        if (event.data) {
+            setMessageInnerHTML(event.data);
+        }
+        console.log(event.data);
+    }
+    //连接关闭的回调方法
+    websocket.onclose = function () {
+        console.log("WebSocket连接关闭");
+    }
+
+    //关闭WebSocket连接
+    function closeWebSocket() {
+        websocket.close();
+    }
+
+    //发送消息
+    function send() {
+        var message = document.getElementById('text').value;
+        websocket.send(message);
+    }
+
+
+    // 建立连接的方法
+    function openWebSocket() {
+        websocket = new WebSocket("ws://127.0.0.1:9999/websocket/demo");
+        websocket.onopen = function () {
+	    // setMessageInnerHTML("WebSocket连接成功");
+        console.log("WebSocket连接成功");
+        }
+    }
+
+
+    //将消息显示在网页上
+
+    function setMessageInnerHTML(innerHTML) {
+
+        document.getElementById('message').innerHTML += innerHTML + '<br/>';
+
+    }
+
+
+    //如果websocket连接还没断开就关闭了窗口，后台server端会抛异常。
+    //所以增加监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接
+    window.onbeforeunload = function () {
+        closeWebSocket();
+    }
+
+</script>
+</body>
+<div id="output"></div>
+</html>
