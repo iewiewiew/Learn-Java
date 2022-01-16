@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql-statefulset
+spec:
+  serviceName: mysql-service
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:latest
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+            - name: MYSQL_DATABASE
+              value: dbname
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: mysql-persistent-storage
+              mountPath: /var/lib/mysql
+  volumeClaimTemplates:
+    - metadata:
+        name: mysql-persistent-storage
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 1Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+spec:
+  selector:
+    app: mysql
+  ports:
+    - port: 3306
+
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mysql-init-job
+spec:
+  template:
+    spec:
+      containers:
+        - name: mysql-init-container
+          image: mysql:latest
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: root
+            - name: MYSQL_DATABASE
+              value: dbname
+          command: ["bash", "-c", "mysql -h mysql-service -u root -p$MYSQL_ROOT_PASSWORD < /root/wei/init.sql"]
+          volumeMounts:
+            - name: mysql-scripts
+              mountPath: /root/wei
+      restartPolicy: Never
+      volumes:
+        - name: mysql-scripts
+          configMap:
+            name: mysql-scripts-configmap
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-scripts-configmap
+data:
+  init.sql: |
+    CREATE TABLE your_table (
+                                id INT PRIMARY KEY AUTO_INCREMENT,
+                                name VARCHAR(255) NOT NULL
+    );
+    INSERT INTO your_table (name) VALUES ('Example');

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>React 组件</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+
+<div id="example"></div>
+<script type="text/babel">
+    function HelloMessage(props) {   //使用函数定义一个组件
+        return <h1>Hello World!</h1>;
+    }
+
+    const element = <HelloMessage />;
+
+    ReactDOM.render(
+        element,
+        document.getElementById('example')
+    );
+</script>
+
+</body>
+</html>

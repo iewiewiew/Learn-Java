@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('拉取代码') {
+            steps {
+                git 'https://gitee.com/iewiewiew/Learn-Java.git'
+            }
+        }
+        stage('编译') {
+            steps {
+                echo '开始编译'
+                sh 'mvn clean package'
+            }
+        }
+    }
+
+    post {
+        always {
+            emailext body: '123', subject: '构建结果', to: '1425615649@qq.com'
+        }
+    }
+}

@@ -1,0 +1,39 @@
+version: '3'
+services:
+  javaweb:
+#    image: java-web-demo:v1.0.0 # 本地镜像
+    image: wwweeeiii/java-web-demo:relese-v1.0.0 # 远程镜像
+    container_name: java-web-demo
+    depends_on:
+      - mysql
+    restart: always
+    ports:
+      - 9999:9999
+  mysql:
+    image: mysql
+    container_name: mysql
+    command: [
+      '--character-set-server=utf8mb4',
+      '--collation-server=utf8mb4_general_ci'
+    ]
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      TZ: Asia/Shanghai
+      LANG: C.UTF-8
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    privileged: true
+  vueview:
+    image: vue-view-demo:v1.0.0
+    container_name: my-vue
+    ports:
+      - 8888:80
+    restart: always
+    depends_on:
+      - javaweb
+    volumes:
+      - ./dist:/usr/share/nginx/html

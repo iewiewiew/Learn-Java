@@ -1,0 +1,35 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-web
+spec:
+  selector:
+    matchLabels:
+      app: springboot-web
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: springboot-web
+    spec:
+      containers:
+        - name: springboot-web
+#          image: docker.io/wwweeeiii/java-web-demo:relese-v1.0.0
+          image: wwweeeiii/java-web-demo:relese-v1.0.0
+          ports:
+            - containerPort: 9999
+---
+#service
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-web
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 9999
+  selector:
+    app: springboot-web
+  type: NodePort
