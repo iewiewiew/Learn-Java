@@ -1,0 +1,5 @@
+org/example/utils/ConnectionUtils.class
+org/example/controller/Producer.class
+org/example/controller/Consumer$1.class
+org/example/Application.class
+org/example/controller/Consumer.class

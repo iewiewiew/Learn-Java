@@ -1,0 +1,16 @@
+#注：只能保持一个请求，其它请求需注释
+
+#GET http://127.0.0.1:9999/demo/listByPage?pageNum=1&pageSize=10
+
+POST http://127.0.0.1:9999/demo/add
+Content-Type: application/json;charset=UTF-8
+
+{
+   "id": 99,
+   "username": "http测试",
+   "password": "http测试",
+   "creater": "admin",
+   "updater": "admin",
+   "createTime": "2022-12-07 21:16:55",
+   "updateTime": "2022-12-07 21:16:55"
+}

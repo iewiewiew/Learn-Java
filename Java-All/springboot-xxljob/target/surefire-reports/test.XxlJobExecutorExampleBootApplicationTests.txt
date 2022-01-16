@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: test.XxlJobExecutorExampleBootApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.161 s <<< FAILURE! - in test.XxlJobExecutorExampleBootApplicationTests
+test.XxlJobExecutorExampleBootApplicationTests  Time elapsed: 0.161 s  <<< ERROR!
+java.lang.IllegalStateException: Unable to find a @SpringBootConfiguration, you need to use @ContextConfiguration or @SpringBootTest(classes=...) with your test
+

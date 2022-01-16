@@ -1,0 +1,5 @@
+org/example/dataobject/UserDO.class
+org/example/Application.class
+org/example/service/UserService.class
+org/example/mapper/UserMapper.class
+org/example/mapper/UserCacheDao.class

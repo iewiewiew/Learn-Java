@@ -1,0 +1,41 @@
+logging:
+  level:
+    com.wmh.dao: debug
+spring:
+  task:
+    execution:
+      pool:
+        # 最大线程数
+        max-size: 16
+        # 核心线程数
+        core-size: 16
+        # 存活时间
+        keep-alive: 10s
+        # 队列大小
+        queue-capacity: 100
+        # 是否允许核心线程超时
+        allow-core-thread-timeout: true
+        # 线程名称前缀
+        thread-name-prefix: async-task-
+    jackson:
+      serialization:
+         FAIL_ON_EMPTY_BEANS: false
+
+dubbo:
+  application:
+    name: spring-boot-demo-dubbo-provider
+    registry: zookeeper://localhost:2181
+
+redis:
+  host: 127.0.0.1
+  port: 6379
+  password: # Redis 服务器密码，默认为空。生产中，一定要设置 Redis 密码！
+  database: 0 # Redis 数据库号，默认为 0 。
+  timeout: 0 # Redis 连接超时时间，单位：毫秒。
+  jedis:
+    pool:
+      max-active: 8 # 连接池最大连接数，默认为 8 。使用负数表示没有限制。
+      max-idle: 8 # 默认连接数最大空闲的连接数，默认为 8 。使用负数表示没有限制。
+      min-idle: 0 # 默认连接池最小空闲的连接数，默认为 0 。允许设置 0 和 正数。
+      max-wait: -1 # 连接池最大阻塞等待时间，单位：毫秒。默认为 -1 ，表示不限制。
+
