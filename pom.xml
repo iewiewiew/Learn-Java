@@ -16,8 +16,9 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>Java-Base</module>
-        <module>Java-Web</module>
+        <module>backend</module>
+        <module>java-base</module>
+        <module>springboot-example</module>
     </modules>
 
     <properties>

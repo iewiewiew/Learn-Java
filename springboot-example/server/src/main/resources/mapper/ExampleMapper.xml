@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wmh.example.mapper.ExampleMapper">
+
+    <select id="getById" parameterType="long" resultType="com.wmh.example.dto.ExampleDto">
+        select * from t_example_info where id = #{id}
+    </select>
+
+    <select id="getAll" resultType="com.wmh.example.dto.ExampleDto">
+        select * from t_example_info order by create_time desc
+    </select>
+
+    <select id="listByPage" parameterType="java.lang.Integer" resultType="com.wmh.example.dto.ExampleDto">
+        select * from t_example_info order by create_time desc
+        limit #{pageNum},#{pageSize};
+    </select>
+
+    <select id="total" parameterType="java.lang.Integer" resultType="Integer">
+        select count(1) from t_example_info
+    </select>
+
+    <insert id="insert" parameterType="com.wmh.example.dto.ExampleDto" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_example_info (username, age, creater, updater, create_time, update_time)
+        VALUES (#{username}, #{age}, #{creater}, #{updater}, #{createTime}, #{updateTime})
+    </insert>
+
+    <update id="update" parameterType="com.wmh.example.dto.ExampleDto">
+        UPDATE t_example_info
+        SET username = #{username},
+        age = #{age},
+        updater = #{updater},
+        update_time = #{updateTime}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="long">
+        DELETE FROM t_example_info WHERE id = #{id}
+    </delete>
+
+</mapper>
